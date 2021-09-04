@@ -1,0 +1,41 @@
+{
+  "paths": [
+    {
+      "name": "/command",
+      "lambdaFunction": "commandProcessor",
+      "privacy": {
+        "private": true,
+        "auth": [
+          "/POST",
+          "/GET",
+          "/PUT",
+          "/PATCH"
+        ]
+      },
+      "policyResourceName": "/command"
+    }
+  ],
+  "resourceName": "barricadelambda",
+  "apiName": "barricadelambda",
+  "functionArns": [
+    {
+      "lambdaFunction": "commandProcessor"
+    }
+  ],
+  "privacy": {
+    "auth": 1,
+    "unauth": 0,
+    "authRoleName": "amplify-barricade-dev-214247-authRole",
+    "unAuthRoleName": "amplify-barricade-dev-214247-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "commandProcessor",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}
