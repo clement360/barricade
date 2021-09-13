@@ -14,9 +14,16 @@ const Controls: React.FC<Props> = () => {
     const [transmissionState, setTransmissionState] = React.useState(baseTransmissionState);
 
     const sendCommand = async (command: string) => {
+        console.log("SENDING: ", command);
+        debugger;
         const restData = await API.post(
             'barricadelambda', '/command',
-              {body: { command: command }});
+              {body: { command: command }})
+                .then(response => {
+                    console.log("SENT: ", response);
+                }).catch(error => {
+                    console.log(error.response);
+                });
     };
 
     return (
@@ -62,6 +69,7 @@ const styles = StyleSheet.create({
     },
     buttonGroup: {
         padding: 10,
+        paddingTop: 0,
         margin: 20,
         backgroundColor: 'rgb(232, 232, 232)',
         borderRadius: 10,

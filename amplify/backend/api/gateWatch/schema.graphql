@@ -1,0 +1,21 @@
+type Gate @model {
+  id: ID!
+  transmissionStatus: TransmissionStatus!
+  gateStatus: GateStatus!
+}
+
+enum TransmissionStatus {
+  UNKNOWN
+  LOCKED
+  LOCKING
+  UNLOCKED
+  UNLOCKING
+}
+
+enum GateStatus {
+  UNKNOWN
+  OPEN
+  OPENING
+  CLOSED
+  CLOSING
+}
